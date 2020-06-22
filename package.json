@@ -1,7 +1,7 @@
 {
   "name": "mern",
   "version": "1.0.0",
-  "description": "In this activity, you'll create a new React-based Google Books Search app. This assignment requires you to create React components, work with helper/util functions, and utilize React lifecycle methods to query and display books based on user searches. You'll also use Node, Express and MongoDB so that users can save books to review or purchase later.",
+  "description": "",
   "main": "server.js",
   "scripts": {
     "start": "if-env NODE_ENV=production && npm run start:prod || npm run start:dev",
@@ -20,17 +20,9 @@
     "nodemon": "^1.18.7"
   },
   "dependencies": {
-    "axios": "^0.18.1",
+    "axios": "^0.18.0",
     "express": "^4.16.3",
-    "if-env": "^1.0.4",
-    "mongoose": "^5.3.16"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/leeretk/google-books.git"
-  },
-  "bugs": {
-    "url": "https://github.com/leeretk/google-books/issues"
-  },
-  "homepage": "https://github.com/leeretk/google-books#readme"
+    "mongoose": "^5.3.16",
+    "if-env": "^1.0.4"
+  }
 }
