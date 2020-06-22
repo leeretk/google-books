@@ -11,7 +11,7 @@ class Books extends Component {
   state = {
     books: [],
     title: "",
-    author: "",
+    authors: "",
     synopsis: "",
     date: "",
     link: "",
@@ -25,7 +25,7 @@ class Books extends Component {
   loadBooks = () => {
     API.getBooks()
       .then(res =>
-        this.setState({ books: res.data, title: "", author: "", synopsis: "",  date: "", link: "", image: "", })
+        this.setState({ books: res.data, title: "", authors: "", synopsis: "",  date: "", link: "", image: "", })
       )
       .catch(err => console.log(err));
   };
@@ -48,7 +48,7 @@ class Books extends Component {
     if (this.state.title && this.state.author) {
       API.saveBook({
         title: this.state.title,
-        author: this.state.author,
+        authors: this.state.authors,
         synopsis: this.state.synopsis,
         date: this.state.date,
         link: this.state.link,
@@ -75,9 +75,9 @@ class Books extends Component {
                 placeholder="Title (required)"
               />
               <Input
-                value={this.state.author}
+                value={this.state.authors}
                 onChange={this.handleInputChange}
-                name="author"
+                name="authors"
                 placeholder="Author (required)"
               />
               <TextArea
