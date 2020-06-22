@@ -15,8 +15,8 @@ function NavTabs(props) {
       <li className="nav-item">
         <a
           href="#about"
-          onClick={() => props.handlePageChange("About")}
-          className={props.currentPage === "About" ? "nav-link active" : "nav-link"}
+          onClick={() => props.handlePageChange("Search")}
+          className={props.currentPage === "Search" ? "nav-link active" : "nav-link"}
         >
           About
         </a>
@@ -24,19 +24,10 @@ function NavTabs(props) {
       <li className="nav-item">
         <a
           href="#blog"
-          onClick={() => props.handlePageChange("Blog")}
-          className={props.currentPage === "Blog" ? "nav-link active" : "nav-link"}
+          onClick={() => props.handlePageChange("Books")}
+          className={props.currentPage === "Books" ? "nav-link active" : "nav-link"}
         >
           Blog
-        </a>
-      </li>
-      <li className="nav-item">
-        <a
-          href="#contact"
-          onClick={() => props.handlePageChange("Contact")}
-          className={props.currentPage === "Contact" ? "nav-link active" : "nav-link"}
-        >
-          Contact
         </a>
       </li>
     </ul>
