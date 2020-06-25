@@ -1,7 +1,7 @@
 {
   "name": "mern",
   "version": "1.0.0",
-  "description": "",
+  "description": "1. Start by using the 07-Ins_Mern example as a base for your application.",
   "main": "server.js",
   "scripts": {
     "start": "if-env NODE_ENV=production && npm run start:prod || npm run start:dev",
@@ -25,5 +25,13 @@
     "if-env": "^1.0.4",
     "mongoose": "^5.9.20",
     "react": "^16.13.1"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/leeretk/google-books.git"
+  },
+  "bugs": {
+    "url": "https://github.com/leeretk/google-books/issues"
+  },
+  "homepage": "https://github.com/leeretk/google-books#readme"
 }
