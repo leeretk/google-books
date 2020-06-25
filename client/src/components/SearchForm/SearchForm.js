@@ -1,5 +1,8 @@
 import React from "react";
 
+//enter in information book for Harry and hit "go" button and call a function (1) on change in input boxes and 2) on click on buttons 
+
+
 function SearchForm(props) {
   return (
     <form>
@@ -7,6 +10,7 @@ function SearchForm(props) {
         <label htmlFor="search">Search:</label>
         <input
           onChange={props.handleInputChange}
+          //when on change in the input box call teh function from parent component. 
           value={props.search}
           name="search"
           type="text"

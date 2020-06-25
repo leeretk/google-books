@@ -25,7 +25,7 @@ class SearchResultContainer extends Component {
     const value = event.target.value;
     this.setState({
       [name]: value
-    });
+    });  //name is in square brackets sets it equal to search
   };
 
   // When the form is submitted, search the Giphy API for `this.state.search`
