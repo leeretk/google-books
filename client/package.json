@@ -1,8 +1,12 @@
 {
   "name": "mern",
   "version": "0.1.0",
+  "engines": {
+    "node": "12.x",
+    "npm": "6.x"
+  },
   "private": true,
-  "proxy": "https://localhost:3001/",
+  "proxy": "https://localhost:3000/",
   "dependencies": {
     "axios": "^0.18.1",
     "express": "^4.17.1",
