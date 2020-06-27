@@ -1,134 +1,51 @@
 import React, { Component } from "react";
-import SaveBtn from "../components/Buttons/SaveBtn";
-import Jumbotron from "../components/Jumbotron/Jumbo";
+import SearchForm from "../components/Forms/SearchForm";
+import List from "../components/List/List";
 import API from "../utils/API";
-import { Link } from "react-router-dom";
-import { Col, Row, Container } from "../components/Grid/Grid";
-import { List, ListItem } from "../components/List/List";
-import { Input, TextArea, FormBtn } from "../components/Form/Form";
 
-class Books extends Component {
+class Search extends Component {
   state = {
-    books: [],
-    title: "",
-    author: "",
-    synopsis: "",
-    link:"",
-    imageURL:"",
+    book: {}
   };
+
+  // When this component mounts, search the Books API
 
   componentDidMount() {
-    this.loadBooks();
+    this.searchBooks("Harry Potter and the Sorcerer's Stone");
   }
 
-  loadBooks = () => {
-    API.getBooks()
-      .then(res =>
-        this.setState({ books: res.data, title: "", author: "", synopsis: "", link: "", imageURL:"" })
-      )
-      .catch(err => console.log(err));
-  };
-
-  saveBook = id => {
-    API.deleteBook(id)
-      .then(res => this.loadBooks())
+  searchBooks = query => {
+    API.search(query)
+      .then(res => this.setState({ results: res.data.data }))
       .catch(err => console.log(err));
   };
 
   handleInputChange = event => {
-    const { name, value } = event.target;
+    const name = event.target.name;
+    const value = event.target.value;
     this.setState({
       [name]: value
-    });
+    });  //name is in square brackets sets it equal to search
   };
 
+  // When the form is submitted, search the Books API for `this.state.search`
   handleFormSubmit = event => {
     event.preventDefault();
-    if (this.state.title && this.state.author) {
-      API.saveBook({
-        title: this.state.title,
-        author: this.state.author,
-        synopsis: this.state.synopsis,
-        link:this.state.link,
-        image:this.state.imageURL
-      })
-        .then(res => this.loadBooks())
-        .catch(err => console.log(err));
-    }
+    this.searchBooks(this.state.search);
   };
 
   render() {
     return (
-      <Container fluid>
-        <Row>
-          <Col size="md-6">
-            <Jumbotron>
-              <h1>Add Books to my Reading list</h1>
-            </Jumbotron>
-            <form>
-              <Input
-                value={this.state.title}
-                onChange={this.handleInputChange}
-                name="title"
-                placeholder="Title (required)"
-              />
-              <Input
-                value={this.state.author}
-                onChange={this.handleInputChange}
-                name="author"
-                placeholder="Author (required)"
-              />
-              <Input
-                value={this.state.link}
-                onChange={this.handleInputChange}
-                name="link"
-                placeholder="Link (optional)"
-              />
-              <Input
-                value={this.state.imageURL}
-                onChange={this.handleInputChange}
-                name="imageURL"
-                placeholder="imageURL (optional)"
-              />
-              <TextArea
-                value={this.state.synopsis}
-                onChange={this.handleInputChange}
-                name="synopsis"
-                placeholder="Synopsis (optional)"
-              />
-              <FormBtn
-                disabled={!(this.state.author && this.state.title)}
-                onClick={this.handleFormSubmit}
-              >
-                Save Book
-              </FormBtn>
-            </form>
-          </Col>
-          <Col size="md-6 sm-12">
-            <Jumbotron>
-              <h1>Books On My List</h1>
-            </Jumbotron>
-            {this.state.books.length ? (
-              <List>
-                {this.state.books.map(book => (
-                  <ListItem key={book._id}>
-                    <Link to={"/books/" + book._id}>
-                      <strong>
-                        {book.title} by {book.author}
-                      </strong>
-                    </Link>
-                    <SaveBtn onClick={() => this.saveBook(book._id)} />
-                  </ListItem>
-                ))}
-              </List>
-            ) : (
-              <h3>No Results to Display</h3>
-            )}
-          </Col>
-        </Row>
-      </Container>
+      <div>
+        <SearchForm
+          search={this.state.search}
+          handleFormSubmit={this.handleFormSubmit}
+          handleInputChange={this.handleInputChange}
+        />
+        <List results={this.state.results} />
+      </div>
     );
   }
 }
 
-export default Books;
+export default Search;
