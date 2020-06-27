@@ -1,6 +1,14 @@
 import axios from "axios";
 
 export default {
+  
+  searchBooks: function(query) {
+    console.log(query)
+    return axios.get("/search", {params: {
+      title: query.title,
+      author: query.author,
+      limit:1}})
+  },
   // Gets all books
   getBooks: function() {
     return axios.get("/api/books");

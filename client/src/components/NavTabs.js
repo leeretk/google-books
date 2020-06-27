@@ -16,7 +16,7 @@ function NavTabs(props) {
         <a
           href="#books"
           onClick={() => props.handlePageChange("SavedBooks")}
-          className={props.currentPage === "SaveBooks" ? "nav-link active" : "nav-link"}
+          className={props.currentPage === "SavedBooks" ? "nav-link active" : "nav-link"}
         >
           Saved Books
         </a>
