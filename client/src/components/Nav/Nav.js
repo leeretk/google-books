@@ -4,7 +4,7 @@ function Nav() {
   return (
     <nav className="navbar navbar-expand-lg navbar-dark bg-primary">
       <a className="navbar-brand" href="/">
-        Google Book Search
+        (React) Google Book Search (Search for and Save Books of Interest)
       </a>
     </nav>
   );

@@ -8,12 +8,13 @@ class Search extends Component {
     book: {}
   };
 
-  // When this component mounts, search the Giphy API for pictures of kittens
+  // When this component mounts, search the Books API
+
   componentDidMount() {
-    this.searchGiphy("kittens");
+    this.searchBooks("Harry Potter and the Sorcerer's Stone");
   }
 
-  searchGiphy = query => {
+  searchBooks = query => {
     API.search(query)
       .then(res => this.setState({ results: res.data.data }))
       .catch(err => console.log(err));
@@ -27,10 +28,10 @@ class Search extends Component {
     });  //name is in square brackets sets it equal to search
   };
 
-  // When the form is submitted, search the Giphy API for `this.state.search`
+  // When the form is submitted, search the Books API for `this.state.search`
   handleFormSubmit = event => {
     event.preventDefault();
-    this.searchGiphy(this.state.search);
+    this.searchBooks(this.state.search);
   };
 
   render() {
