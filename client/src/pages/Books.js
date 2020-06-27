@@ -14,7 +14,7 @@ class Books extends Component {
     author: "",
     synopsis: "",
     link:"",
-    image:"",
+    imageURL:"",
   };
 
   componentDidMount() {
@@ -24,7 +24,7 @@ class Books extends Component {
   loadBooks = () => {
     API.getBooks()
       .then(res =>
-        this.setState({ books: res.data, title: "", author: "", synopsis: "", link: "", image:"" })
+        this.setState({ books: res.data, title: "", author: "", synopsis: "", link: "", imageURL:"" })
       )
       .catch(err => console.log(err));
   };
@@ -50,7 +50,7 @@ class Books extends Component {
         author: this.state.author,
         synopsis: this.state.synopsis,
         link:this.state.link,
-        image:this.state.image
+        image:this.state.imageURL
       })
         .then(res => this.loadBooks())
         .catch(err => console.log(err));
@@ -63,7 +63,7 @@ class Books extends Component {
         <Row>
           <Col size="md-6">
             <Jumbotron>
-              <h1>What Books Should I Read?</h1>
+              <h1>Add Books to my Reading list</h1>
             </Jumbotron>
             <form>
               <Input
@@ -78,17 +78,29 @@ class Books extends Component {
                 name="author"
                 placeholder="Author (required)"
               />
+              <Input
+                value={this.state.link}
+                onChange={this.handleInputChange}
+                name="link"
+                placeholder="Link (optional)"
+              />
+              <Input
+                value={this.state.imageURL}
+                onChange={this.handleInputChange}
+                name="imageURL"
+                placeholder="imageURL (optional)"
+              />
               <TextArea
                 value={this.state.synopsis}
                 onChange={this.handleInputChange}
                 name="synopsis"
-                placeholder="Synopsis (Optional)"
+                placeholder="Synopsis (optional)"
               />
               <FormBtn
                 disabled={!(this.state.author && this.state.title)}
                 onClick={this.handleFormSubmit}
               >
-                Submit Book
+                Save Book
               </FormBtn>
             </form>
           </Col>

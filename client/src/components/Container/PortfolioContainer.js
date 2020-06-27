@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import NavTabs from "./components/NavTabs";
-import Home from "./pages/Home";
 import Search from "./pages/Search";
 import Books from "./pages/Books";
 
@@ -15,14 +14,12 @@ class Portfolio extends Component {
   };
 
   renderPage = () => {
-    if (this.state.currentPage === "Home") {
-      return <Home />;
-    } else if (this.state.currentPage === "Search") {
+    if (this.state.currentPage === "Search") {
       return <Search />;
     } else if (this.state.currentPage === "Books") {
       return <Books />;
     } else {
-      return <Home />;
+      return <Search />;
     }
   };
 
