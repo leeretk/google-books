@@ -1,34 +1,32 @@
 import React from "react";
+import { Link } from "react-router-dom";
 
 function NavTabs(props) {
   return (
     <ul className="nav nav-tabs">
       <li className="nav-item">
-        <a
-          href="#search"
-          onClick={() => props.handlePageChange("SearchBooks")}
-          className={props.currentPage === "SearchBooks" ? "nav-link active" : "nav-link"}
+        <Link
+          to="/"
+          className={window.location.pathname === "/" ? "nav-link active" : "nav-link"}
         >
           Search
-        </a>
+        </Link>
       </li>
       <li className="nav-item">
-        <a
-          href="#books"
-          onClick={() => props.handlePageChange("Books")}
-          className={props.currentPage === "Books" ? "nav-link active" : "nav-link"}
+        <Link
+          to="/books"
+          className={window.location.pathname === "books" ? "nav-link active" : "nav-link"}
         >
           Saved Books
-        </a>
+        </Link>
       </li>
       <li className="nav-item">
-        <a
-          href="#books"
-          onClick={() => props.handlePageChange("AddBooks")}
-          className={props.currentPage === "AddBooks" ? "nav-link active" : "nav-link"}
+      <Link
+          to="/addbooks"
+          className={window.location.pathname === "addbooks" ? "nav-link active" : "nav-link"}
         >
           Add Books
-        </a>
+        </Link>
       </li>
     </ul>
   );

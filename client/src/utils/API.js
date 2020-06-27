@@ -6,8 +6,8 @@ export default {
     console.log(query)
     return axios.get("/search", {params: {
       title: query.title,
-      author: query.author,
-      limit:1}})
+      author: query.author
+     }})
   },
   // Gets all books
   getBooks: function() {
@@ -25,7 +25,4 @@ export default {
   saveBook: function(bookData) {
     return axios.post("/api/books", bookData);
   },
-  searchBook: function(book) {
-    return axios.get("/search", { params: {title: book.title, author: book.author, limit: 1 }})
-  }
 };

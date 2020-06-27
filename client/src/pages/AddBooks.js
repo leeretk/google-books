@@ -1,11 +1,14 @@
 import React, { Component } from "react";
-import SearchForm from "../components/Forms/SearchForm";
 import List from "../components/List/List";
 import API from "../utils/API";
+import { Input, FormBtn } from "../components/Forms/AddBook"
 
 class Search extends Component {
   state = {
-    book: {}
+    book: {},
+    searchBooks:[],
+    author:"",
+    title:""
   };
 
   // When this component mounts, search the Books API
@@ -15,9 +18,12 @@ class Search extends Component {
   }
 
   searchBooks = query => {
-    API.search(query)
-      .then(res => this.setState({ results: res.data.data }))
-      .catch(err => console.log(err));
+    API.searchBooks(query)
+    .then(res => {
+      console.log(res.data)
+      this.setState({ searchBooks: res.data, title: "", author: ""})
+    })
+    .catch(err => console.log(err));
   };
 
   handleInputChange = event => {
@@ -31,18 +37,33 @@ class Search extends Component {
   // When the form is submitted, search the Books API for `this.state.search`
   handleFormSubmit = event => {
     event.preventDefault();
-    this.searchBooks(this.state.search);
+    this.searchBooks({title: this.state.title,
+      author: this.state.author});
   };
 
   render() {
     return (
       <div>
-        <SearchForm
-          search={this.state.search}
-          handleFormSubmit={this.handleFormSubmit}
-          handleInputChange={this.handleInputChange}
-        />
-        <List results={this.state.results} />
+      <form style={{marginBottom:80}}>
+              <Input
+                value={this.state.title}
+                onChange={this.handleInputChange}
+                name="title"
+                placeholder="Title (required)"
+              />
+              <Input
+                value={this.state.author}
+                onChange={this.handleInputChange}
+                name="author"
+                placeholder="Author (required)"
+              />
+              <FormBtn
+                disabled={!(this.state.author && this.state.title)}
+                onClick={this.handleFormSubmit}
+              >
+                Find Book
+              </FormBtn>
+            </form>
       </div>
     );
   }
