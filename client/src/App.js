@@ -1,10 +1,10 @@
 import React from "react";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-import SavedBooks from "./pages/SavedBooks";
+import Books from "./pages/Books";
 import AddBooks from "./pages/AddBooks";
 import Detail from "./pages/Detail";
 import NoMatch from "./pages/NoMatch";
-import Search from "./pages/Search";
+import SearchBooks from "./pages/SearchBooks";
 import Nav from "./components/Nav/Nav";
 import NavTabs from "./components/NavTabs";
 
@@ -15,10 +15,10 @@ function App() {
         <Nav />
         <NavTabs />
         <Switch>
-          <Route exact path="/" component={SavedBooks} />
-          <Route exact path="/books" component={SavedBooks} />
+          <Route exact path="/" component={Books} />
+          <Route exact path="/books" component={Books} />
           <Route exact path="/books" component={AddBooks} />
-          <Route exact path="/books/:id" component={Search} />
+          <Route exact path="/books/:id" component={SearchBooks} />
           <Route exact path="/books/:id" component={Detail} />
           <Route component={NoMatch} />
         </Switch>

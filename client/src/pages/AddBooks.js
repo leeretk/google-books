@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import DeleteBtn from "../components/DeleteBtn/DeleteBtn";
+import SaveBtn from "../components/Buttons/SaveBtn";
 import Jumbotron from "../components/Jumbotron/Jumbo";
 import API from "../utils/API";
 import { Link } from "react-router-dom";
@@ -29,7 +29,7 @@ class Books extends Component {
       .catch(err => console.log(err));
   };
 
-  deleteBook = id => {
+  saveBook = id => {
     API.deleteBook(id)
       .then(res => this.loadBooks())
       .catch(err => console.log(err));
@@ -117,7 +117,7 @@ class Books extends Component {
                         {book.title} by {book.author}
                       </strong>
                     </Link>
-                    <DeleteBtn onClick={() => this.deleteBook(book._id)} />
+                    <SaveBtn onClick={() => this.saveBook(book._id)} />
                   </ListItem>
                 ))}
               </List>

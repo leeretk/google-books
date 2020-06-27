@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import DeleteBtn from "../components/DeleteBtn/DeleteBtn";
+import DeleteBtn from "../components/Buttons/DeleteBtn";
 import Jumbotron from "../components/Jumbotron/Jumbo";
 import API from "../utils/API";
 import { Link } from "react-router-dom";
@@ -34,7 +34,7 @@ class Books extends Component {
       .catch(err => console.log(err));
   };
 
-  SaveBook = id => {
+  saveBook = id => {
     API.SaveBook(id)
       .then(res => this.loadBooks())
       .catch(err => console.log(err));

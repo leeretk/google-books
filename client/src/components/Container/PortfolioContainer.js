@@ -1,7 +1,8 @@
 import React, { Component } from "react";
 import NavTabs from "./components/NavTabs";
-import Search from "./pages/Search";
-import Books from "./pages/Books";
+import SearchBooks from "../../pages/SearchBooks";
+import AddBooks from "../../pages/AddBooks";
+import SavedBooks from "../../pages/Books";
 
 class Portfolio extends Component {
   state = {
@@ -14,10 +15,12 @@ class Portfolio extends Component {
   };
 
   renderPage = () => {
-    if (this.state.currentPage === "Search") {
-      return <Search />;
-    } else if (this.state.currentPage === "Books") {
-      return <Books />;
+    if (this.state.currentPage === "SearchBooks") {
+      return <SearchBooks />;
+    } else if (this.state.currentPage === "SavedBooks") {
+      return <SavedBooks />;
+    } else if (this.state.currentPage === "AddBooks") {
+      return <AddBooks />;
     } else {
       return <Search />;
     }
