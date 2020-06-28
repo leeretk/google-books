@@ -1,8 +1,13 @@
 import React, { Component } from "react";
 import List from "../components/List/List";
-import API from "../utils/API";
+import Thumbnail from "../components/Thumbnail/Thumbnail";
+import Col from "../components/Grid/Col";
+import Row from "../components/Grid/Row";
+import SaveBtn from "../components/Buttons/SaveBtn"
+import LinkBtn from "../components/Buttons/LinkBtn"
 import { Input, FormBtn } from "../components/Forms/AddBook"
-import Thumbnail from "../components/Thumbnail/Thumbnail'";
+import API from "../utils/API";
+
 
 class Search extends Component {
   state = {
@@ -65,8 +70,7 @@ class Search extends Component {
                 Find Book
               </FormBtn>
             </form>
-      </div>
-      <div>
+
       {this.state.searchBooks.length ? (
         <List>
           {this.state.searchBooks.map(book => (
@@ -89,7 +93,7 @@ class Search extends Component {
                   book.title,
                   book.author,
                   book.synopsis,
-                  book.image,
+                  book.imageURL,
                   book.link)
                 } />
                 <LinkBtn onClick={() => this.goToLink(book.link)}/>
@@ -100,12 +104,10 @@ class Search extends Component {
       ) : (
           <h3>Enter Title and Author to Search</h3>
         )}
-    </Col>
 
     </div>
 
-    );
-  }
+  );
 }
-
+}
 export default Search;

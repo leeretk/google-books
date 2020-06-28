@@ -8,5 +8,5 @@ function Thumbnail(props) {
             <img className="border border-info" alt={props.title} src={props.image}/>
         </div>
     )
-
+    }
 export default Thumbnail;
