@@ -35,6 +35,7 @@ class Books extends Component {
       .catch(err => console.log(err));
   };
 
+  
   handleInputChange = event => {
     const { name, value } = event.target;
     this.setState({
@@ -42,20 +43,7 @@ class Books extends Component {
     });
   };
 
-  handleFormSubmit = event => {
-    event.preventDefault();
-    if (this.state.title && this.state.author) {
-      API.saveBook({
-        title: this.state.title,
-        author: this.state.author,
-        synopsis: this.state.synopsis,
-        link:this.state.link,
-        image:this.state.images
-      })
-        .then(res => this.loadBooks())
-        .catch(err => console.log(err));
-    }
-  };
+  goToLink = link => window.location.assign(link)
 
   render() {
     return (

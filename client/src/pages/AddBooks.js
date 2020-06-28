@@ -34,10 +34,24 @@ class Search extends Component {
     .catch(err => console.log(err));
   };
 
-  saveBook = id => {
-    API.saveBook(id)
+  saveBook = (id,title,author,synopsis,image,link) => {
+    let newAuthor = ""
+    if (author==='undefined') {
+      newAuthor = ""
+    } else {
+      newAuthor = author[0]
+    }
+    API.saveBook({
+      _id: id,
+      title: title,
+      author: newAuthor,
+      synopsis: synopsis,
+      image:image,
+      link:link
+    })
       .then(res => this.loadBooks())
       .catch(err => console.log(err));
+
   };
 
   viewBooks = query => {
@@ -63,6 +77,7 @@ class Search extends Component {
     this.searchBooks({title: this.state.title,
       author: this.state.author});
   };
+
 
   render() {
     return (
