@@ -78,6 +78,7 @@ class Search extends Component {
       author: this.state.author});
   };
 
+  goToLink = link => window.location.assign(link)
 
   render() {
     return (
