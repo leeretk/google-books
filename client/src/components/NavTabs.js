@@ -9,16 +9,10 @@ function NavTabs(props) {
           to="/"
           className={window.location.pathname === "/" ? "nav-link active" : "nav-link"}
         >
-          Search
-        </Link>
+          Saved Books
+      </Link>
       </li>
       <li className="nav-item">
-        <Link
-          to="/books"
-          className={window.location.pathname === "books" ? "nav-link active" : "nav-link"}
-        >
-          Saved Books
-        </Link>
       </li>
       <li className="nav-item">
       <Link
