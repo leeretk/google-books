@@ -7,7 +7,7 @@ const bookSchema = new Schema({
   synopsis: { type: String, required: true},
   date: { type: Date, default: Date.now },
   link: { type: String, required: false },
-  imageURL: {type: String , required: false}
+  images: {type: String , required: false}
 });
 
 const Book = mongoose.model("Book", bookSchema);

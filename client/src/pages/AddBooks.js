@@ -14,13 +14,15 @@ class Search extends Component {
     book: {},
     searchBooks:[],
     author:"",
-    title:""
+    title:"",
+    link:"",
+    images:""
   };
 
   // When this component mounts, search the Books API
 
   componentDidMount() {
-    this.searchBooks("Harry Potter and the Sorcerer's Stone");
+    this.searchBooks("Harry Potter");
   }
 
   searchBooks = query => {
@@ -31,6 +33,21 @@ class Search extends Component {
     })
     .catch(err => console.log(err));
   };
+
+  saveBook = id => {
+    API.saveBook(id)
+      .then(res => this.loadBooks())
+      .catch(err => console.log(err));
+  };
+
+  viewBooks = query => {
+    API.searchBooks(query)
+    .then(res => {
+      console.log(res.data)
+      this.setState({ viewBooks: res.data, title: "", author: "", images:""})
+    })
+    .catch(err => console.log(err));
+  }; 
 
   handleInputChange = event => {
     const name = event.target.name;
@@ -87,16 +104,18 @@ class Search extends Component {
               <Col size="md-7">
                 {book.synopsis}
               </Col>
-              <Col size="md-2">
+              <Col size="md-1">
                 <SaveBtn onClick={() => this.saveBook(
-                  book.id,
+                  book._id,
                   book.title,
                   book.author,
                   book.synopsis,
-                  book.imageURL,
+                  book.images,
                   book.link)
                 } />
-                <LinkBtn onClick={() => this.goToLink(book.link)}/>
+              </Col>
+              <Col size="md-1">
+              <LinkBtn onClick={() => this.goToLink(book.link)}/>
               </Col>
             </Row>
           ))}
@@ -106,7 +125,6 @@ class Search extends Component {
         )}
 
     </div>
-
   );
 }
 }

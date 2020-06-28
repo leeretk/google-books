@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import DeleteBtn from "../components/Buttons/DeleteBtn";
+import LinkBtn from "../components/Buttons/LinkBtn";
 import Jumbotron from "../components/Jumbotron/Jumbo";
 import API from "../utils/API";
 import { Link } from "react-router-dom";
@@ -13,7 +14,7 @@ class Books extends Component {
     author: "",
     synopsis: "",
     link:"",
-    imageURL:"",
+    images:"",
   };
 
   componentDidMount() {
@@ -23,19 +24,13 @@ class Books extends Component {
   loadBooks = () => {
     API.getBooks()
       .then(res =>
-        this.setState({ books: res.data, title: "", author: "", synopsis: "", link: "", imageURL:"" })
+        this.setState({ books: res.data, title: "", author: "", synopsis: "", link: "", images:"" })
       )
       .catch(err => console.log(err));
   };
 
   deleteBook = id => {
     API.deleteBook(id)
-      .then(res => this.loadBooks())
-      .catch(err => console.log(err));
-  };
-
-  saveBook = id => {
-    API.SaveBook(id)
       .then(res => this.loadBooks())
       .catch(err => console.log(err));
   };
@@ -55,7 +50,7 @@ class Books extends Component {
         author: this.state.author,
         synopsis: this.state.synopsis,
         link:this.state.link,
-        image:this.state.imageURL
+        image:this.state.images
       })
         .then(res => this.loadBooks())
         .catch(err => console.log(err));
@@ -79,7 +74,7 @@ class Books extends Component {
                         {book.title} by {book.author}
 
                       </strong>
-                        {book.imageURL} 
+                        {book.images} 
                         {book.synopsis}
                         {book.link}
                     </Link>
