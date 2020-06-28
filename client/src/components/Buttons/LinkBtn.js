@@ -3,7 +3,7 @@ import "./style.css";
 
 function LinkBtn(props) {
   return (
-    <span className="link-button" {...props} role="button" tabIndex="0">
+    <span className="link-btn" {...props} role="button" tabIndex="0">
       View
     </span>
   );

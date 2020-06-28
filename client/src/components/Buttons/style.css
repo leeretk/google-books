@@ -1,4 +1,17 @@
 .delete-btn {
   float: right;
   color: #e74944;
+  border: indianred;
+}
+.save-btn {
+  float: right;
+  color: #e74944;
+}
+.view-btn {
+  float: right;
+  color: green;
+}
+.link-btn {
+  float: right;
+  color: green;
 }

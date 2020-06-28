@@ -7,6 +7,7 @@ import SaveBtn from "../components/Buttons/SaveBtn"
 import LinkBtn from "../components/Buttons/LinkBtn"
 import { Input, FormBtn } from "../components/Forms/AddBook"
 import API from "../utils/API";
+import Jumbotron from "../components/Jumbotron/Jumbo";
 
 
 class Search extends Component {
@@ -82,7 +83,8 @@ class Search extends Component {
 
   render() {
     return (
-      <div>
+      <div className="container">
+      <Jumbotron><h1>Enter Title and Author to Search Books</h1></Jumbotron>
       <form style={{marginBottom:80}}>
               <Input
                 value={this.state.title}
@@ -137,7 +139,7 @@ class Search extends Component {
           ))}
         </List>
       ) : (
-          <h3>Enter Title and Author to Search</h3>
+          <h3></h3>
         )}
 
     </div>

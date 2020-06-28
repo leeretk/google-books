@@ -35,7 +35,6 @@ class Books extends Component {
       .catch(err => console.log(err));
   };
 
-  
   handleInputChange = event => {
     const { name, value } = event.target;
     this.setState({
@@ -47,27 +46,32 @@ class Books extends Component {
 
   render() {
     return (
+    <div className="container">
+            <Jumbotron>
+              <h1>Saved Books - Reading List</h1>
+            </Jumbotron>
       <Container fluid>
         <Row>
-           <Col size="md-6 sm-12">
-            <Jumbotron>
-              <h1>Saved Books</h1>
-            </Jumbotron>
+           <Col size="lg-12">
             {this.state.books.length ? (
               <List>
-                {this.state.books.map(book => (
-                  <ListItem key={book._id}>
+            
+            {this.state.books.map(book => (
+            
+              <ListItem key={book._id}>
+                 <Col size="md-10">
                     <Link to={"/books/" + book._id}>
                       <strong>
                         {book.title} by {book.author}
-
                       </strong>
-                        {book.images} 
-                        {book.synopsis}
-                        {book.link}
                     </Link>
-                  
+                    </Col>
+                    <Col size="md-1">
+                      <LinkBtn onClick={() => this.goToLink(book.link)}/>
+                    </Col>
+                    <Col size="md-1">
                     <DeleteBtn onClick={() => this.deleteBook(book._id)} />
+                    </Col>
                   </ListItem>
                 ))}
               </List>
@@ -77,6 +81,7 @@ class Books extends Component {
           </Col>
         </Row>
       </Container>
+      </div>
     );
   }
 }
