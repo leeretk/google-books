@@ -109,6 +109,7 @@ class Search extends Component {
       {this.state.searchBooks.length ? (
         <List>
           {this.state.searchBooks.map(book => (
+            
             <Row className="search-row" key={book.id}>
               <Col size="md-3">
                 <Thumbnail
@@ -119,6 +120,7 @@ class Search extends Component {
                   {book.title} by {book.author}
                 </strong>
               </Col>
+
               <Col size="md-7">
                 {book.synopsis}
               </Col>

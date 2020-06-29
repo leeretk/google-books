@@ -51,10 +51,7 @@ class Books extends Component {
               <h1>Saved Books - Reading List</h1>
             </Jumbotron>
             
-          
-
-
-            {this.state.books.length ? (
+           {this.state.books.length ? (
               <List>
               {this.state.books.map(book => (
                 <Row className="search-row" key={book._id}>
