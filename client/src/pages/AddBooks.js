@@ -123,7 +123,7 @@ class Search extends Component {
                 {book.synopsis}
               </Col>
               <Col size="md-1">
-                <SaveBtn onClick={() => this.saveBook(
+                <SaveBtn class="btn btn-success" onClick={() => this.saveBook(
                   book._id,
                   book.title,
                   book.author,
@@ -133,7 +133,7 @@ class Search extends Component {
                 } />
               </Col>
               <Col size="md-1">
-              <LinkBtn onClick={() => this.goToLink(book.link)}/>
+              <LinkBtn class="btn btn-success" onClick={() => this.goToLink(book.link)}/>
               </Col>
             </Row>
           ))}

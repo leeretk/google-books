@@ -50,37 +50,34 @@ class Books extends Component {
             <Jumbotron>
               <h1>Saved Books - Reading List</h1>
             </Jumbotron>
-      <Container fluid>
-        <Row>
-           <Col size="lg-12">
+            
+          
+
+
             {this.state.books.length ? (
               <List>
-            
-            {this.state.books.map(book => (
-            
-              <ListItem key={book._id}>
-                 <Col size="md-10">
-                    <Link to={"/books/" + book._id}>
-                      <strong>
-                        {book.title} by {book.author}
-                      </strong>
-                    </Link>
+              {this.state.books.map(book => (
+                <Row className="search-row" key={book._id}>
+                  <Col size="md-10">
+                      <Link to={"/books/" + book._id}>
+                          <strong>
+                            {book.title} by {book.author}
+                          </strong>
+                        </Link>
+                 </Col>
+                 
+                 <Col size="md-1">
+                    <LinkBtn class="btn btn-success" onClick={() => this.goToLink(book.link)}/>
                     </Col>
                     <Col size="md-1">
-                      <LinkBtn onClick={() => this.goToLink(book.link)}/>
+                    <DeleteBtn class="btn btn-success" onClick={() => this.deleteBook(book._id)} />
                     </Col>
-                    <Col size="md-1">
-                    <DeleteBtn onClick={() => this.deleteBook(book._id)} />
-                    </Col>
-                  </ListItem>
+                    </Row>
                 ))}
               </List>
             ) : (
               <h3>No Results to Display</h3>
             )}
-          </Col>
-        </Row>
-      </Container>
       </div>
     );
   }
