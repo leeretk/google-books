@@ -27,7 +27,7 @@
         "bootstrap": "^3.4.1",
         "create-react-app": "^3.4.1",
         "dotenv": "^8.2.0",
-        "express": "^4.16.3",
+        "express": "^4.18.2",
         "google-books-search": "^0.3.1",
         "if-env": "^1.0.4",
         "mini-create-react-context": "^0.4.0",
